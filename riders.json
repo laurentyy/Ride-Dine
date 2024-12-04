@@ -1,0 +1,12 @@
+[
+    {
+        "name": "Luis Dela Cruz",
+        "location": [
+            13.789396997517569,
+            121.06776304482351
+        ],
+        "proximity": 0.5,
+        "availability": false,
+        "phone_number": "+63929681188"
+    }
+]
