@@ -1,12 +1,12 @@
 [
     {
-        "name": "Luis Dela Cruz",
+        "name": "Pedro Garcia",
         "location": [
-            13.789396997517569,
-            121.06776304482351
+            13.785364659163415,
+            121.06891965153082
         ],
-        "proximity": 0.5,
-        "availability": false,
-        "phone_number": "+63929681188"
+        "proximity": 0.19,
+        "availability": true,
+        "phone_number": "+63937402736"
     }
 ]
