@@ -53,9 +53,7 @@ def main_page(page: ft.Page):
 
         # Time validation (should match HH:MM format)
         preferred_time = time_input.value
-        if not preferred_time or len(preferred_time) != 5 or preferred_time[2] != ":" or not preferred_time[
-                                                                                             :2].isdigit() or not preferred_time[
-                                                                                                                  3:].isdigit():
+        if not preferred_time or len(preferred_time) != 5 or preferred_time[2] != ":" or not preferred_time[:2].isdigit() or not preferred_time[3:].isdigit():
             errors.append(("time", "Please enter a valid time in HH:MM format"))
 
         # Proximity validation (must be a positive number)
@@ -145,17 +143,18 @@ def store_details_page(page: ft.Page):
         page.add(ft.Text("No store selected"))
         return
 
-    # Show selected store details
+    # Show selected store details (added hyperlink for urls)
     store_details = ft.Column([
         ft.Text(f"You chose {selected_store['name']}!"),
-        ft.Text(f"Google Map Link: {selected_store['location_url']}"),
-        ft.Text(f"Facebook Page: {selected_store['fb_page'] if selected_store['fb_page'] else 'N/A'}"),
+        ft.Text(f"Google Map Link:{ "" if selected_store['location_url'] else 'N/A'}"),
+        ft.TextButton(text=f"{selected_store['name']}", on_click=lambda _: page.launch_url(selected_store['location_url'])),
+        ft.Text(f"Facebook Page: {selected_store['fb_page']}"),
+        ft.TextButton(text=f"{"Facebook Page" if selected_store['fb_page'] else 'N/A'}", on_click=lambda _: page.launch_url(selected_store['fb_page'] if selected_store['fb_page'] else 'N/A')),
         ft.Text(f"Rating: {selected_store['rating'] if selected_store['rating'] else 'No rating'} stars"),
         ft.Text(f"Type: {selected_store['type']}"),
         ft.Text(f"Proximity: {selected_store['proximity']} km"),
-        ft.Text(
-            f"Time Availability: {selected_store['time_availability'] if selected_store['time_availability'] else 'N/A'}"),
-    ])
+        ft.Text(f"Time Availability: {selected_store['time_availability'] if selected_store['time_availability'] else 'N/A'}"),]
+        )
 
     need_rider_button_yes = ft.ElevatedButton("Yes, I need a rider", on_click=lambda e: on_need_rider(page))
     need_rider_button_no = ft.ElevatedButton("No, I don't need a rider", on_click=lambda e: on_no_rider(page))
@@ -220,7 +219,10 @@ def find_nearest_rider(riders, store):
 
 # Start Flet app
 def main(page: ft.Page):
-    # Initial page load
+    page.title = "Ride&Dine"
+    page.window.width = 360
+    page.window.height = 720
+    page.window.center()
     main_page(page)
 
 # Run the app

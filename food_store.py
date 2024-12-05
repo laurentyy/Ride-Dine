@@ -29,6 +29,6 @@ def recommend_stores(food_stores, stores_by_type, budget, time, proximity, cuisi
     recommendations = []
     if cuisine in stores_by_type:
         for store in stores_by_type[cuisine]:
-            if store["proximity"] <= proximity and store["min_price"] <= budget <= store["max_price"]:
+            if store["proximity"] <= proximity and store["min_price"] <= budget: #removed <= store["max_price"], fixed logic
                 recommendations.append(store)
     return recommendations

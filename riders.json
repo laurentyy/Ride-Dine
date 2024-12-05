@@ -1,12 +1,12 @@
 [
     {
-        "name": "Luis Dela Cruz",
+        "name": "Jose Dela Cruz",
         "location": [
-            13.789396997517569,
-            121.06776304482351
+            13.782007846878606,
+            121.07455769201036
         ],
-        "proximity": 0.5,
-        "availability": false,
-        "phone_number": "+63929681188"
+        "proximity": 0.61,
+        "availability": true,
+        "phone_number": "+63992059646"
     }
 ]
